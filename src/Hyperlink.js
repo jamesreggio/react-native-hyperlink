@@ -74,7 +74,7 @@ class Hyperlink extends Component {
         _lastIndex = lastIndex
         if (this.props.linkText)
           text = typeof this.props.linkText === 'function'
-              ? this.props.linkText(url)
+              ? this.props.linkText(url, text)
               : this.props.linkText
 
         if (OS !== 'web') {
