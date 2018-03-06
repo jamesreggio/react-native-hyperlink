@@ -108,7 +108,7 @@ var Hyperlink = function (_Component) {
           var nonLinkedText = component.props.children.substring(_lastIndex, index);
           nonLinkedText && elements.push(nonLinkedText);
           _lastIndex = lastIndex;
-          if (_this2.props.linkText) text = typeof _this2.props.linkText === 'function' ? _this2.props.linkText(url) : _this2.props.linkText;
+          if (_this2.props.linkText) text = typeof _this2.props.linkText === 'function' ? _this2.props.linkText(url, text) : _this2.props.linkText;
 
           if (OS !== 'web') {
             componentProps.onLongPress = function () {
@@ -149,6 +149,8 @@ var Hyperlink = function (_Component) {
       if (!children) return component;
 
       var componentProps = _extends({}, component.props, {
+        onPress: undefined,
+        onLongPress: undefined,
         ref: undefined,
         key: undefined
       });
