@@ -106,6 +106,8 @@ class Hyperlink extends Component {
 
     const componentProps = {
       ...component.props,
+      onPress: undefined,
+      onLongPress: undefined,
       ref: undefined,
       key: undefined,
     }
