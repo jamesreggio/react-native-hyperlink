@@ -77,13 +77,17 @@ class Hyperlink extends Component {
               ? this.props.linkText(url, text)
               : this.props.linkText
 
+        let linkedComponentProps = componentProps;
         if (OS !== 'web') {
-          componentProps.onLongPress = () => this.props.onLongPress && this.props.onLongPress(url, text)
+          linkedComponentProps = {
+            ...componentProps,
+            onLongPress: () => this.props.onLongPress && this.props.onLongPress(url, text),
+          };
         }
 
         elements.push(
           <Text
-            { ...componentProps }
+            { ...linkedComponentProps }
             key={ url + index }
             style={ [ component.props.style, this.props.linkStyle ] }
             onPress={ () => this.props.onPress && this.props.onPress(url, text) }
@@ -106,6 +110,8 @@ class Hyperlink extends Component {
 
     const componentProps = {
       ...component.props,
+      onPress: undefined,
+      onLongPress: undefined,
       ref: undefined,
       key: undefined,
     }
